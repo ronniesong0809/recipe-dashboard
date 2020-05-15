@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 
 class Home extends Component {
   render() {
@@ -11,6 +12,10 @@ class Home extends Component {
         
         <div className="Site-content">
             testing
+        </div>
+        
+        <div className="Footer">
+            <Footer />
         </div>
       </div>
     )
