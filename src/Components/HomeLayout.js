@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
-import Body from '../Components/Body'
 
-class Home extends Component {
+class HomeLayout extends Component {
   render() {
     return (
       <div className="Site">
@@ -12,7 +11,7 @@ class Home extends Component {
         </div>
         
         <div className="Site-content">
-          <Body />
+            {this.props.children}
         </div>
         
         <div className="Footer">
@@ -23,4 +22,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default HomeLayout

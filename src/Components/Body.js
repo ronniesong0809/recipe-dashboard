@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import HomeLayout from '../Components/HomeLayout'
 import Axios from 'axios'
 
 export default class Body extends Component {
@@ -29,7 +30,8 @@ export default class Body extends Component {
 
   render() {
     return (
-      <div className="Home">
+      <HomeLayout>
+        <div className="Home">
           <div>
             <h2> testing </h2>
             {/* {this.state.recipes[0]} */}
@@ -37,6 +39,7 @@ export default class Body extends Component {
           {/* {this.state.recipes.map(el => (
           ))} */}
         </div>
+      </HomeLayout>
     )
   }
 }
