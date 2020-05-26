@@ -31,20 +31,23 @@ class Chart extends Component {
   }
 
   render() {
-    let stats = {
-      text: null,
-      weight: 0,
-    }
-    this.state.recipes.forEach(e => {
-      if(!stats.name)  {
-        stats.text = e.text
-      }
-      stats.weight = e.weight
-    })
+    // let stats = {
+    //   text: null,
+    //   weight: 0,
+    // }
+    // this.state.recipes.forEach(e => {
+    //   if(!stats.name)  {
+    //     stats.text = e.text
+    //   }
+    //   stats.weight = e.weight
+    // })
 
     return (
         <div className="Home">
-          {stats.text}
+          
+          {this.state.recipes.map(i => 
+            <div> {i.text} {i.weight}</div>
+          )}
         </div>
     )
   }
