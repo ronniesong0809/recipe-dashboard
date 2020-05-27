@@ -9,20 +9,35 @@ class IngredientsChart extends Component {
     super(props);
     this.state = {
       keys: [],
-      values: []
+      values: [],
+      color:[]
     }
+  }
+
+  random_color() {
+    var r = Math.floor(Math.random() * 256)
+    var g = Math.floor(Math.random() * 256)
+    var b = Math.floor(Math.random() * 256)
+    // var alpha = Math.random()
+    var alpha = Math.random() * (0.90 - 0.6) + 0.6 // 0.6~0.9
+    var color = "rgba(" + r + "," + g + "," + b + "," + alpha + ")"
+    console.log(color)
+    return color
   }
 
   componentDidMount() {
     let tempKeys = []
     let tempValues = []
+    let tempColor = []
     this.props.data.forEach((item) =>{ 
       tempKeys.push(item.text)
       tempValues.push(item.weight)
+      tempColor.push('#' + Math.floor(Math.random()*16777215).toString(16))
     })
     this.setState({
       keys: tempKeys,
-      values: tempValues
+      values: tempValues,
+      color: tempColor
     })
 	};
 
@@ -31,34 +46,8 @@ class IngredientsChart extends Component {
       labels: this.state.keys,
       datasets: [{
         data: this.state.values,
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ],
-        hoverBackgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ]
+        backgroundColor: this.state.color,
+        hoverBackgroundColor: this.state.color
       }]
     };
     return (
