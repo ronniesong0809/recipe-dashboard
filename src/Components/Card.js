@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Card, Button, Modal} from 'react-bootstrap'
+import IngredientsChart from './IngredientsChart'
 
 class Chart extends Component {
   constructor() {
@@ -56,6 +57,7 @@ class Chart extends Component {
               <Modal.Title>{this.props.item.recipe.label}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+              <IngredientsChart data={this.props.item.recipe.ingredients}/>
               {this.props.item.recipe.ingredients.map((ingredient, ingredient_key) => 
                 <span key={ingredient_key}> {ingredient.text} {ingredient.weight}<br/></span>
               )}
