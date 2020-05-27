@@ -43,7 +43,7 @@ class Chart extends Component {
               </Card.Text>
             </Card.Body>
             <Card.Footer>
-              <Button variant="secondary" href={this.props.item.recipe.url}>Go {this.props.item.recipe.source}</Button>
+              <Button variant="secondary" href={this.props.item.recipe.url} className="mr-sm-2">Go {this.props.item.recipe.source}</Button>
               <Button variant="primary" href={this.props.item.recipe.shareAs}>More Details</Button>
             </Card.Footer>
           </Card>

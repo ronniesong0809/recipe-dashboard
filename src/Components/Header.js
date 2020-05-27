@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Navbar, Nav, NavDropdown, FormControl, Form, Button} from 'react-bootstrap'
+import {Navbar, Nav} from 'react-bootstrap'
 import { ReactComponent as Logo } from './Logo.svg';
 
 class Headers extends Component {

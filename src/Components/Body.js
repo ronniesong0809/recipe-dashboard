@@ -4,7 +4,7 @@ import Map from './Map'
 import List from './List'
 import HomeLayout from './HomeLayout'
 import Axios from 'axios'
-import {Form, FormControl, Button} from 'react-bootstrap'
+import {InputGroup, FormControl, Button} from 'react-bootstrap'
 
 class Body extends Component {
   constructor() {
@@ -58,23 +58,35 @@ class Body extends Component {
     return (
       <HomeLayout>
         <div>
-          <br />
-          <Form inline>
-            <FormControl
-            onChange={this.handleSearchInput}
-            value={this.state.searchText}
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
+          <InputGroup size="lg" style={{margin:"auto", width:"60%"}} className="mt-5 mb-5">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-lg">
+                Enter a Recipe
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl 
+              onChange={this.handleSearchInput}
+              type="text"
+              placeholder={this.state.searchText}
+              aria-label="Large" 
+              aria-describedby="inputGroup-sizing-lg" 
             />
-            <Button onClick={this.handleSearchSubmit} variant="outline-info">
-            Search
-            </Button>
-          </Form>
+            <InputGroup.Append>
+              <Button onClick={this.handleSearchSubmit} variant="outline-secondary">Search</Button>
+            </InputGroup.Append>
+          </InputGroup>
 
-          <Cards recipes={this.state.recipes}/>
-          <Map />
-          <List />
+          <section id="Card">
+            <Cards recipes={this.state.recipes} />
+          </section>
+          
+          <section id="Map">
+            <Map recipes={this.state.recipes} />
+          </section>
+          
+          <section id="List">
+            <List recipes={this.state.recipes} />
+          </section>
         </div>
       </HomeLayout>
     )
