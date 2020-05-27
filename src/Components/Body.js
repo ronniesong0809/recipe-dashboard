@@ -4,7 +4,7 @@ import Map from './Map'
 import List from './List'
 import HomeLayout from './HomeLayout'
 import Axios from 'axios'
-import {InputGroup, FormControl, Button} from 'react-bootstrap'
+import {InputGroup, FormControl, Button, Jumbotron} from 'react-bootstrap'
 
 class Body extends Component {
   constructor() {
@@ -12,6 +12,7 @@ class Body extends Component {
     this.state = { 
       recipes: [],
       searchText: "Chili crab",
+      isLoaded: false,
     };
   }
 
@@ -41,7 +42,8 @@ class Body extends Component {
         console.log(res.data.hits[0].recipe.ingredients)
         await this.setState({
           // recipes: res.data.hits[0].recipe.ingredients
-          recipes: res.data.hits
+          recipes: res.data.hits,
+          isLoaded: true,
         })
       }
     })
@@ -50,14 +52,10 @@ class Body extends Component {
     })
   }
 
-  // async componentDidMount() {
-  //   this.search()
-  // }
-
   render() {
     return (
       <HomeLayout>
-        <div>
+        <div style={{height:"100%"}}>
           <InputGroup size="lg" style={{margin:"auto", width:"60%"}} className="mt-5 mb-5">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-lg">
@@ -76,17 +74,28 @@ class Body extends Component {
             </InputGroup.Append>
           </InputGroup>
 
-          <section id="Card">
-            <Cards recipes={this.state.recipes} />
-          </section>
-          
-          <section id="Map">
-            <Map recipes={this.state.recipes} />
-          </section>
-          
-          <section id="List">
-            <List recipes={this.state.recipes} />
-          </section>
+          {!this.state.isLoaded &&
+            <Jumbotron fluid>
+              <h1>Welcome!</h1>
+              <p>This is a simple dashboard.</p>
+              <p><Button variant="primary" href="https://github.com/ronniesong0809/dashboard">Learn more</Button></p>
+            </Jumbotron>
+          }
+
+          {this.state.isLoaded && <div>
+              <section id="Card">
+                <Cards recipes={this.state.recipes} />
+              </section>
+              
+              <section id="Map">
+                <Map recipes={this.state.recipes} />
+              </section>
+              
+              <section id="List">
+                <List recipes={this.state.recipes} />
+              </section>
+            </div>
+          }
         </div>
       </HomeLayout>
     )
