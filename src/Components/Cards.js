@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {CardDeck} from 'react-bootstrap'
 import Card from './Card'
 
-class Chart extends Component {
+class Cards extends Component {
   render() {
     return (
       <div className="Home">
@@ -20,4 +20,4 @@ class Chart extends Component {
   }
 }
 
-export default Chart
+export default Cards

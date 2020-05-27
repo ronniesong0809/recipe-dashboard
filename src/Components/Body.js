@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Chart from './Chart'
+import Cards from './Cards'
 import Map from './Map'
 import List from './List'
 import HomeLayout from './HomeLayout'
@@ -72,7 +72,7 @@ class Body extends Component {
             </Button>
           </Form>
 
-          <Chart recipes={this.state.recipes}/>
+          <Cards recipes={this.state.recipes}/>
           <Map />
           <List />
         </div>
