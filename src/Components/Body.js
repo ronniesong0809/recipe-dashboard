@@ -11,12 +11,27 @@ class Body extends Component {
     super();
     this.state = { 
       recipes: [],
-      searchText: "Chili crab",
+      searchTextList: [
+        "Chili crab", 
+        "Seafood paella", 
+        "Chicken rice", 
+        "Parma ham", 
+        "Shish kebab", 
+        "Buffalo Chicken Dip", 
+        "Mini Caramel Rolls", 
+        "Three-Bean Baked Beans", 
+        "Pepper Poppers", 
+        "Sour Cream Chip Muffins", 
+        "Onion Beef au Jus"],
+      searchText: "",
       isLoaded: false,
+      interval: 0
     };
   }
 
   handleSearchInput = event => {
+    console.log(this.state.interval)
+    clearInterval(this.state.interval)
     this.setState({
       searchText: event.target.value
     });
@@ -43,18 +58,37 @@ class Body extends Component {
         await this.setState({
           // recipes: res.data.hits[0].recipe.ingredients
           recipes: res.data.hits,
-          isLoaded: true,
+          isLoaded: true
         })
       }
     })
     .catch(err => {
       console.log(err, 'failed to search for recipes.');
+      this.setState({
+        // recipes: res.data.hits[0].recipe.ingredients
+        isLoaded: false
+      })
+      alert(err + "!\nFailed to search for recipes.");
     })
   }
 
+  randomRecipe(){
+    this.setState({
+      interval: setInterval(() => {
+			this.setState({
+        searchText: this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)]
+      })
+      console.log(this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)])
+		}, 5000)})
+  }
+
+  componentDidMount() {
+    this.randomRecipe()
+	}
+
   render() {
     return (
-      <HomeLayout>
+      <HomeLayout isLoaded={this.state.isLoaded}>
         <div style={{height:"100%"}}>
           <InputGroup size="lg" style={{margin:"auto", width:"60%"}} className="mt-5 mb-5">
             <InputGroup.Prepend>

@@ -12,11 +12,12 @@ class Headers extends Component {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
+          {this.props.isLoaded &&
           <Nav className="mr-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#Map">Map</Nav.Link>
             <Nav.Link href="#List">List</Nav.Link>
-          </Nav>
+          </Nav>}
         </Navbar.Collapse>
       </Navbar>
     )
