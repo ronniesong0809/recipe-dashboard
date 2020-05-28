@@ -74,16 +74,18 @@ class Body extends Component {
 
   randomRecipe(){
     this.setState({
-      interval: setInterval(() => {
-			this.setState({
-        searchText: this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)]
-      })
-      console.log(this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)])
-		}, 5000)})
+      searchText: this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)]
+    })
+    console.log(this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)])
   }
 
   componentDidMount() {
     this.randomRecipe()
+    this.setState({
+      interval: setInterval(() => {
+        this.randomRecipe()    
+      }, 5000)
+    })
 	}
 
   render() {
