@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Chart from './Chart'
 import Cards from './Cards'
 import Map from './Map'
 import List from './List'
@@ -37,7 +38,7 @@ class Body extends Component {
     });
   };
 
-  handleSearchSubmit = event => {
+  handleSearchSubmit = () => {
     if (this.state.searchText) {
       this.search()
     } else {
@@ -118,7 +119,11 @@ class Body extends Component {
             </Jumbotron>
           }
 
-          {this.state.isLoaded && <div>
+          {this.state.isLoaded && 
+            <div>
+              <section id="Chart">
+                <Chart recipes={this.state.recipes} />
+              </section>
               <section id="Card">
                 <Cards recipes={this.state.recipes} />
               </section>
