@@ -5,7 +5,7 @@ import Map from './Map'
 import List from './List'
 import HomeLayout from './HomeLayout'
 import Axios from 'axios'
-import {InputGroup, FormControl, Button, Jumbotron} from 'react-bootstrap'
+import {InputGroup, FormControl, Button, Jumbotron, Container, Row, Col} from 'react-bootstrap'
 
 class Body extends Component {
   constructor() {
@@ -120,22 +120,45 @@ class Body extends Component {
           }
 
           {this.state.isLoaded && 
-            <div>
-              <section id="Chart">
-                <Chart recipes={this.state.recipes} />
-              </section>
-              <section id="Card">
-                <Cards recipes={this.state.recipes} />
-              </section>
+            <Container>
+              <Row>
+                <Col>
+                  <section id="Chart">
+                    <Chart recipes={this.state.recipes} />
+                  </section>
+                </Col>
+                
+                <Col>
+                  <section id="Chart">
+                    <Chart recipes={this.state.recipes} />
+                  </section>
+                </Col>
+
+                <Col>
+                  <section id="Chart">
+                    <Chart recipes={this.state.recipes} />
+                  </section>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  <section id="Map">
+                    <Map searchText={this.state.searchText} />
+                  </section>
+                </Col>
+              </Row>
               
-              <section id="Map">
-                <Map recipes={this.state.recipes} />
-              </section>
+              <Row>
+                <section id="Card">
+                  <Cards recipes={this.state.recipes} />
+                </section>
               
-              <section id="List">
-                <List recipes={this.state.recipes} />
-              </section>
-            </div>
+                <section id="List">
+                  <List recipes={this.state.recipes} />
+                </section>
+              </Row>
+            </Container>
           }
         </div>
       </HomeLayout>
