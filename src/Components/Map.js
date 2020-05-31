@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import Axios from "axios"
+import React, { Component } from 'react'
+import Axios from 'axios'
 
 class Map extends Component {
   constructor() {
@@ -10,17 +10,21 @@ class Map extends Component {
   }
 
   search(){
-    const BASE_URL = "https://api.yelp.com/v3/businesses/search?term=" + this.state.searchText + "&location=portland&limit=3"
+    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const base = "https://api.yelp.com/v3/businesses/search?term="
+    const params = "&location=portland&limit=3"
+    const key = "Bearer 4mP1pGrwFpbuMXBoiIMkrGRA6WmtaU9boasPYOT-bvEZ0bi7xTl7lr6uXHORbbvWG4CsJwUY-bRLCvTRqyCYmKLKhWZ3Hsg7fWiKIAXM3BkETbtGtD7_8U-afM3uXXYx"
+    const url = proxy + base + this.state.searchText + params
     const config = { 
       headers: {
         "accept": "application/json",
         "x-requested-with": "xmlhttprequest",
         "Access-Control-Allow-Origin":"*",
-        Authorization: "Bearer 4mP1pGrwFpbuMXBoiIMkrGRA6WmtaU9boasPYOT-bvEZ0bi7xTl7lr6uXHORbbvWG4CsJwUY-bRLCvTRqyCYmKLKhWZ3Hsg7fWiKIAXM3BkETbtGtD7_8U-afM3uXXYx"
+        "Authorization": key
       }
     }
 
-    Axios.get(BASE_URL, config)
+    Axios.get(url, config)
     .then((res) => {
       if(res.data) {
         console.log(res.data)
@@ -32,7 +36,11 @@ class Map extends Component {
   }
 
   search2(){
-    const BASE_URL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="+ this.state.searchText + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyBM6S4xKcqav3e_UWqwNdvfGOwtYlK-XK0"
+    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const base = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input="
+    const params = "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry"
+    const key = "&key=AIzaSyBM6S4xKcqav3e_UWqwNdvfGOwtYlK-XK0"
+    const url = proxy + base + this.state.searchText + params + key
     const config = {
       headers: {
         "Access-Control-Allow-Origin":"http://localhost:3000",
@@ -50,7 +58,7 @@ class Map extends Component {
     // .catch(err => {
     //   console.log(err, "failed to search.");
     // })
-    fetch(BASE_URL, config)
+    fetch(url, config)
     .then(res => res.json()).then((result) => {
       if(result.data) {
         console.log(result.data)
