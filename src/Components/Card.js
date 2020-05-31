@@ -23,52 +23,54 @@ class Chart extends Component {
         ingredients: x
       });
     }
-    
-    return (
-        <div className="Home">
-          <Card className="text-left">
-            <Card.Img variant="top" src={this.props.item.recipe.image} />
-            <Card.Header as="h5">{this.props.item.recipe.label}</Card.Header>
-            <Card.Body>
-              <Card.Title as="h6">Calories: {this.props.item.recipe.calories}</Card.Title>
-              <Card.Subtitle className="mb-2 text-muted">Weight: {this.props.item.recipe.totalWeight}</Card.Subtitle>
-              <Card.Text>
-                <br/>Ingredient Lines:
-                {this.props.item.recipe.ingredientLines.map((ingredientLine, ingredientLines_key) => 
-                  <span key={ingredientLines_key}> {ingredientLine}, </span>
-                )}<br/>
-                <Button variant="primary" onClick={handleShow}>
-                  Read More
-                </Button>
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <Button variant="secondary" href={this.props.item.recipe.url} className="mr-sm-2">Go {this.props.item.recipe.source}</Button>
-              <Button variant="primary" href={this.props.item.recipe.shareAs}>More Details</Button>
-            </Card.Footer>
-          </Card>
 
-          <Modal 
-            show={this.state.show} 
-            onHide={handleClose}
-            className="modal-90w"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title>{this.props.item.recipe.label}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <IngredientsChart data={this.props.item.recipe.ingredients}/>
-              {this.props.item.recipe.ingredients.map((ingredient, ingredient_key) => 
-                <span key={ingredient_key}> {ingredient.text} {ingredient.weight}<br/></span>
-              )}
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+    return (
+      <Card className="text-left mb-5">
+        <Card.Img variant="top" src={this.props.item.recipe.image} />
+        <Card.Header>
+          {this.props.item.recipe.healthLabels.map((healthLabels, healthLabels_key) => 
+            <span key={healthLabels_key} style={{fontSize:"13px"}}>{(healthLabels_key ? ' | ': '')} {healthLabels} </span>
+          )}
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>
+            <a href={this.props.item.recipe.url} style={{color:"gray", fontSize:"11px"}}>{this.props.item.recipe.source}</a><br/>
+            {this.props.item.recipe.label}
+          </Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            {(this.props.item.recipe.calories/this.props.item.recipe.yield).toFixed(0)} Calories | {this.props.item.recipe.ingredientLines.length} Ingredients
+          </Card.Subtitle>
+          <Card.Text>
+            {this.props.item.recipe.ingredientLines.map((ingredientLine, ingredientLines_key) => 
+              <span key={ingredientLines_key}> {(ingredientLines_key ? ', ': '')} {ingredientLine}</span>
+            ).slice(0,5)}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <Button variant="primary" onClick={handleShow}>See Chart</Button>{' '}
+          <Button variant="primary" href={this.props.item.recipe.shareAs}>More Details</Button>
+        </Card.Footer>
+        <Modal 
+          show={this.state.show} 
+          onHide={handleClose}
+          className="modal-90w"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>{this.props.item.recipe.label}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <IngredientsChart data={this.props.item.recipe.ingredients}/>
+            {this.props.item.recipe.ingredients.map((ingredient, ingredient_key) => 
+              <span key={ingredient_key}> {ingredient.text} {ingredient.weight}<br/></span>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </Card>
     )
   }
 }
