@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {CardDeck} from 'react-bootstrap'
 import Card from './Card'
+import './stylesheet.css'
 
 class Cards extends Component {
   render() {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {Card, Button, Modal} from 'react-bootstrap'
-import IngredientsChart from './IngredientsChart'
+import NutrientsDoughnut from './Chart/NutrientsDoughnut'
+import IngredientsBar from './Chart/IngredientsBar';
+import './stylesheet.css'
 
 class Chart extends Component {
   constructor() {
@@ -27,23 +29,23 @@ class Chart extends Component {
     return (
       <Card className="text-left mb-5">
         <Card.Img variant="top" src={this.props.item.recipe.image} />
-        <Card.Header>
+        <Card.Header className="card-header-labels">
           {this.props.item.recipe.healthLabels.map((healthLabels, healthLabels_key) => 
-            <span key={healthLabels_key} style={{fontSize:"13px"}}>{(healthLabels_key ? ' | ': '')} {healthLabels} </span>
+            <span key={healthLabels_key}>{(healthLabels_key ? ' | ': '')} {healthLabels} </span>
           )}
         </Card.Header>
         <Card.Body>
           <Card.Title>
-            <a href={this.props.item.recipe.url} style={{color:"gray", fontSize:"11px"}}>{this.props.item.recipe.source}</a><br/>
+            <a href={this.props.item.recipe.url} className="card-title-source">{this.props.item.recipe.source}</a><br/>
             {this.props.item.recipe.label}
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            {(this.props.item.recipe.calories/this.props.item.recipe.yield).toFixed(0)} Calories | {this.props.item.recipe.ingredientLines.length} Ingredients
+            <b>{(this.props.item.recipe.calories/this.props.item.recipe.yield).toFixed(0)}</b> Calories | <b>{this.props.item.recipe.ingredientLines.length}</b> Ingredients
           </Card.Subtitle>
-          <Card.Text>
-            {this.props.item.recipe.ingredientLines.map((ingredientLine, ingredientLines_key) => 
+          <Card.Text className="mt-2 card-text">
+            <b>Ingredients:</b>{this.props.item.recipe.ingredientLines.map((ingredientLine, ingredientLines_key) => 
               <span key={ingredientLines_key}> {(ingredientLines_key ? ', ': '')} {ingredientLine}</span>
-            ).slice(0,5)}
+            )}<span>, and <a href={this.props.item.recipe.url}>more</a>.</span>
           </Card.Text>
         </Card.Body>
         <Card.Footer>
@@ -59,10 +61,8 @@ class Chart extends Component {
             <Modal.Title>{this.props.item.recipe.label}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <IngredientsChart data={this.props.item.recipe.ingredients}/>
-            {this.props.item.recipe.ingredients.map((ingredient, ingredient_key) => 
-              <span key={ingredient_key}> {ingredient.text} {ingredient.weight}<br/></span>
-            )}
+            <NutrientsDoughnut data={this.props.item.recipe.totalNutrients}/><hr/>
+            <IngredientsBar data={this.props.item.recipe.ingredients}/>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

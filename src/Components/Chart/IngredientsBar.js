@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import {Doughnut} from 'react-chartjs-2';
-// import './Card.css'
+import {HorizontalBar} from 'react-chartjs-2';
 
-class IngredientsChart extends Component {
-  displayName: 'DynamicDoughnutExample';
-  
+class IngredientsBar extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -28,35 +25,39 @@ class IngredientsChart extends Component {
   componentDidMount() {
     let tempKeys = []
     let tempValues = []
-    let tempColor = []
+    // let tempColor = []
     this.props.data.forEach((item) =>{ 
       tempKeys.push(item.text)
       tempValues.push(item.weight)
-      tempColor.push('#' + Math.floor(Math.random()*16777215).toString(16))
+      // tempColor.push('#' + Math.floor(Math.random()*16777215).toString(16))
     })
     this.setState({
       keys: tempKeys,
       values: tempValues,
-      color: tempColor
+      // color: tempColor
     })
-	};
+	}
 
   render() {
     var data = {
       labels: this.state.keys,
       datasets: [{
+        label: "weight(g)",
         data: this.state.values,
-        backgroundColor: this.state.color,
-        hoverBackgroundColor: this.state.color
+        backgroundColor: 'rgba(99, 210, 255, 0.2)',
+        borderColor: 'rgba(99, 210, 255, 1)',
+        borderWidth: 1,
+        hoverBackgroundColor: 'rgba(99, 210, 255, 0.4)',
+        hoverBorderColor: 'rgba(99, 210, 255, 1)',
       }]
     };
     return (
       <div>
-        <h2>Dynamicly refreshed Doughnut Example</h2>
-        <Doughnut data={data} />
+        <h5>Ingredients</h5>
+        <HorizontalBar data={data} />
       </div>
     );
   }
 }
 
-export default IngredientsChart
+export default IngredientsBar

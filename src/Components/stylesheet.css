@@ -1,0 +1,24 @@
+.card-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card-header-labels {
+  font-size: 11px;
+}
+
+.card-title-source {
+  color: gray;
+  font-size: 12px;
+}
+
+.card-text {
+  display: inline-block;
+  white-space: wrap;
+  max-height: 70px;
+  overflow: hidden;
+}
+
+.card-text:hover {
+  overflow: visible;
+}
