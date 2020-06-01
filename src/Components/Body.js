@@ -21,12 +21,12 @@ class Body extends Component {
         "Shish kebab", 
         "Buffalo Chicken Dip", 
         "Mini Caramel Rolls", 
-        "Pepper Poppers", 
         "Sour Cream Chip Muffins", 
         "Onion Beef au Jus"],
       searchText: "",
       isLoaded: false,
-      interval: 0
+      interval: 0,
+      businesses: []
     };
   }
 
@@ -40,13 +40,14 @@ class Body extends Component {
 
   handleSearchSubmit = () => {
     if (this.state.searchText) {
-      this.search()
+      this.searchRecipe()
+      this.searchLocation()
     } else {
       alert("Please enter some search text!");
     }
   };
   
-  search(){
+  searchRecipe(){
     const BASE_URL = 'https://api.edamam.com/search'
     const key = '&app_id=9d0b7970&app_key=d9473a311a7f52d37a0450db0d0cc581'
     let finalUrl = BASE_URL + '?q=' + this.state.searchText + key + '&from=0&to=20';
@@ -78,6 +79,34 @@ class Body extends Component {
       searchText: this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)]
     })
     console.log(this.state.searchTextList[Math.floor(Math.random() * Object.keys(this.state.searchTextList).length)])
+  }
+
+  searchLocation(){
+    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const base = "https://api.yelp.com/v3/businesses/search?term="
+    const params = "&location=portland&limit=3"
+    const key = "Bearer 4mP1pGrwFpbuMXBoiIMkrGRA6WmtaU9boasPYOT-bvEZ0bi7xTl7lr6uXHORbbvWG4CsJwUY-bRLCvTRqyCYmKLKhWZ3Hsg7fWiKIAXM3BkETbtGtD7_8U-afM3uXXYx"
+    const url = proxy + base + this.state.searchText + params
+    const config = { 
+      headers: {
+        "accept": "application/json",
+        "x-requested-with": "xmlhttprequest",
+        "Access-Control-Allow-Origin":"*",
+        "Authorization": key
+      }
+    }
+
+    Axios.get(url, config)
+    .then((res) => {
+      if(res.data) {
+        this.setState({
+          businesses: res.data.businesses
+        })
+      }
+    })
+    .catch(err => {
+      console.log(err, "failed to search.");
+    })
   }
 
   componentDidMount() {
@@ -144,7 +173,7 @@ class Body extends Component {
               <Row className="justify-content-md-center y-5">
                 <Col>
                   <section id="Map">
-                    <Map searchText={this.state.searchText}/>
+                    <Map businesses={this.state.businesses}/>
                   </section>
                 </Col>
               </Row>
