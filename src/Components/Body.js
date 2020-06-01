@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import BarChart from './Chart/DashboardBar'
-import DoughnutChart from './Chart/DashboardDoughnut'
+import DashboardBar from './Chart/DashboardBar'
+import DashboardHorizontal from './Chart/DashboardHorizontal'
+import DashboardDoughnut from './Chart/DashboardDoughnut'
 import Cards from './Cards'
 import Map from './Map'
 import List from './List'
@@ -153,19 +154,19 @@ class Body extends Component {
               <Row className="justify-content-md-center mb-5">
                 <Col md className="m-1">
                   <Card id="Chart">
-                    <BarChart recipes={this.state.recipes} />
+                    <DashboardHorizontal recipes={this.state.recipes} />
                   </Card>
                 </Col>
                 
                 <Col md className="m-1">
                   <Card id="Chart">
-                    <DoughnutChart recipes={this.state.recipes} />
+                    <DashboardBar recipes={this.state.recipes} />
                   </Card>
                 </Col>
 
                 <Col md className="m-1">
                   <Card id="Chart">
-                    <DoughnutChart recipes={this.state.recipes} />
+                    <DashboardDoughnut recipes={this.state.recipes} />
                   </Card>
                 </Col>
               </Row>
