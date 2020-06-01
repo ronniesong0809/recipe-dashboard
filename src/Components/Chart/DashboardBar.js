@@ -1,31 +1,54 @@
 import React, { Component } from 'react'
 import {Bar} from 'react-chartjs-2';
 
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'FAT',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
-      data: [65, 59, 80, 81, 56, 55, 40]
-    }
-  ]
-};
-
 class DashboardBar extends Component {
   render() {
+    var data = []
+    let tempName = []
+    let tempCarbs = []
+    let tempProtein = []
+    let tempFat = []
+    this.props.recipes.slice(0,3).forEach((item) =>{
+      tempName.push(item.recipe.label)
+      tempCarbs.push(item.recipe.totalNutrients.CHOCDF.quantity)
+      tempProtein.push(item.recipe.totalNutrients.PROCNT.quantity)
+      tempFat.push(item.recipe.totalNutrients.FAT.quantity)
+    })
+
+    data = {
+      labels: tempName,
+      datasets: [
+        {
+          label: 'Carbohydrates',
+          backgroundColor: 'rgba(255,206,86,0.2)',
+          borderColor: 'rgba(255,206,86,1)',
+          borderWidth: 1,
+          hoverBackgroundColor: 'rgba(255,206,86,0.4)',
+          hoverBorderColor: 'rgba(255,206,86,1)',
+          data: tempCarbs
+        },{
+          label: 'Protein',
+          backgroundColor: 'rgba(178,255,158,0.2)',
+          borderColor: 'rgba(178,255,158,1)',
+          borderWidth: 1,
+          hoverBackgroundColor: 'rgba(178,255,158,0.4)',
+          hoverBorderColor: 'rgba(178,255,158,1)',
+          data: tempProtein
+        },{
+          label: 'Fat',
+          backgroundColor: 'rgba(255,99,132,0.2)',
+          borderColor: 'rgba(255,99,132,1)',
+          borderWidth: 1,
+          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+          hoverBorderColor: 'rgba(255,99,132,1)',
+          data: tempFat
+        }
+      ]
+    };
     return (
       <div>
-        <Bar 
-          data={data}
-          options={{
-            maintainAspectRatio: false
-          }}
-        />
+        <h5>Carb, Protein and Fat comparison</h5>
+        <Bar data={data} />
       </div>
     )
   }
