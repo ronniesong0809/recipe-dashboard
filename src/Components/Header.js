@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from './Logo.svg';
 class Headers extends Component {
   render() {
     return (
-      <Navbar fixed="top" bg="dark" variant="dark" expand="lg">
+      <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
         <Navbar.Brand href="/">
           <Logo fill="white" src="/Logo.svg" width="30" height="30" className="d-inline-block align-top" />{' '}
           Recipes Dashboard

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {InputGroup, FormControl, Button, Jumbotron, Container, Row, Col, Card, Nav, Figure} from 'react-bootstrap'
+import {InputGroup, FormControl, Button, Jumbotron, Container, Card, Nav} from 'react-bootstrap'
 import Axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBug} from '@fortawesome/free-solid-svg-icons'
@@ -7,6 +7,7 @@ import {faGithub} from '@fortawesome/free-brands-svg-icons'
 import HomeLayout from './HomeLayout'
 import DashboardBar from './Chart/DashboardBar'
 import DashboardHorizontal from './Chart/DashboardHorizontal'
+import DashboardHorizontal2 from './Chart/DashboardHorizontal2'
 import DashboardDoughnut from './Chart/DashboardDoughnut'
 import Cards from './Cards'
 import Map from './Map'
@@ -31,7 +32,8 @@ class Body extends Component {
       isLoaded: false,
       interval: 0,
       businesses: [],
-      displayCard: 1
+      displayCard: 1,
+      nutrition: [],
     };
   }
 
@@ -55,7 +57,7 @@ class Body extends Component {
   handleCardChange1 = () => {this.setState({displayCard: 1})};
   handleCardChange2 = () => {this.setState({displayCard: 2})};
   handleCardChange3 = () => {this.setState({displayCard: 3})};
-  
+  handleCardChange4 = () => {this.setState({displayCard: 4})};
   
   searchRecipe(){
     const BASE_URL = 'https://api.edamam.com/search'
@@ -67,12 +69,13 @@ class Body extends Component {
       if(res.data) {
         console.log(res.data.hits)
         console.log(res.data.hits[0].recipe.ingredients)
-        await this.setState({
+        this.setState({
           // recipes: res.data.hits[0].recipe.ingredients
           recipes: res.data.hits,
           isLoaded: true
         })
       }
+      this.searchNutrition()
     })
     .catch(err => {
       console.log(err, 'failed to search for recipes.');
@@ -81,6 +84,38 @@ class Body extends Component {
         isLoaded: false
       })
       alert(err + "!\nFailed to search for recipes.");
+    })
+  }
+
+  searchNutrition(){
+    // console.log(ingredients[0].recipe.ingredientsLines)
+    let searchText = ""
+    this.state.recipes[0].recipe.ingredientLines.forEach(element => {
+      // console.log(element)
+      searchText += element + ', '
+    });
+    const BASE_URL = 'https://trackapi.nutritionix.com/v2/natural/nutrients/'
+    const id = "ec32a59d"
+    const key = "d13ec612386c8937ed513fc295ad10e3"
+    const config = {
+      headers:{
+        "Content-Type": "application/json;charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "x-app-id": id,
+        "x-app-key": key
+      }
+    }
+    Axios.post(BASE_URL, {'query': searchText}, config )
+    .then((res) => {
+      if(res.data) {
+        this.setState({
+          nutrition: res.data.foods
+        })
+      }
+      console.log("nutrition: ", this.state.nutrition)
+    })
+    .catch(err => {
+      console.log(err, 'failed to search for recipes.');
     })
   }
 
@@ -177,25 +212,31 @@ class Body extends Component {
             <section id="Charts" className="justify-content-md-center"><hr/></section>
               <Card>
                 <Card.Header>
-                <Nav variant="tabs" defaultActiveKey="#Ingredients">
+                <Nav variant="tabs" defaultActiveKey="#Ingredients1">
                   <Nav.Item>
-                    <Nav.Link eventKey="#Ingredients" onClick={this.handleCardChange1}>Ingredients</Nav.Link>
+                    <Nav.Link eventKey="#Ingredients1" onClick={this.handleCardChange1}>Ingredients 1</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="#Comparison" onClick={this.handleCardChange2}>Comparison</Nav.Link>
+                    <Nav.Link eventKey="#Ingredients2" onClick={this.handleCardChange2}>Ingredients 2</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="#Breakdown" onClick={this.handleCardChange3}>Breakdown</Nav.Link>
+                    <Nav.Link eventKey="#Comparison" onClick={this.handleCardChange3}>Comparison</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="#Breakdown" onClick={this.handleCardChange4}>Breakdown</Nav.Link>
                   </Nav.Item>
                 </Nav>
                 </Card.Header>
-                  {this.state.displayCard===1 && 
-                    <DashboardHorizontal recipes={this.state.recipes}/>
+                  {this.state.displayCard===1 &&
+                    <DashboardHorizontal recipes={this.state.recipes} />
                   }
-                  {this.state.displayCard===2 &&
-                    <DashboardBar recipes={this.state.recipes}/>
+                  {this.state.displayCard===2 && 
+                    <DashboardHorizontal2 nutrition={this.state.nutrition} />
                   }
                   {this.state.displayCard===3 &&
+                    <DashboardBar recipes={this.state.recipes}/>
+                  }
+                  {this.state.displayCard===4 &&
                     <DashboardDoughnut recipes={this.state.recipes} />
                   }
                 <Card.Footer>
