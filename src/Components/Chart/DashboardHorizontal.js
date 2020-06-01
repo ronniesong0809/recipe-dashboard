@@ -10,7 +10,6 @@ class DashboardHorizontal extends Component {
     this.props.recipes[0].recipe.ingredients.forEach((item) =>{ 
       tempKeys.push(item.text)
       tempValues.push(item.weight)
-      // tempColor.push('#' + Math.floor(Math.random()*16777215).toString(16))
     })
     var data = {
       labels: tempKeys,
@@ -26,7 +25,6 @@ class DashboardHorizontal extends Component {
     };
     return (
       <div>
-        <h5>Ingredients</h5>
         <HorizontalBar data={data} />
       </div>
     );

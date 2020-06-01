@@ -151,41 +151,44 @@ class Body extends Component {
 
           {this.state.isLoaded && 
             <Container>
-              <Row className="justify-content-md-center mb-5">
+              <Row className="justify-content-md-center my-5">
                 <Col md className="m-1">
                   <Card id="Chart">
-                    <DashboardHorizontal recipes={this.state.recipes} />
+                  <Card.Header>Ingredients</Card.Header>
+                    <DashboardHorizontal recipes={this.state.recipes}/>
                   </Card>
                 </Col>
                 
                 <Col md className="m-1">
                   <Card id="Chart">
-                    <DashboardBar recipes={this.state.recipes} />
+                  <Card.Header>Carbs, Protein and Fat comparison</Card.Header>
+                    <DashboardBar recipes={this.state.recipes}/>
                   </Card>
                 </Col>
 
                 <Col md className="m-1">
                   <Card id="Chart">
+                    <Card.Header>Carbs, Protein and Fat Breakdown</Card.Header>
                     <DashboardDoughnut recipes={this.state.recipes} />
                   </Card>
                 </Col>
-              </Row>
+              </Row><hr/>
 
-              <Row className="justify-content-md-center y-5">
+              <Row className="justify-content-md-center my-5">
                 <Col>
                   <section id="Map">
                     <Map businesses={this.state.businesses}/>
                   </section>
                 </Col>
-              </Row>
+              </Row><hr/>
               
-              <Row className="justify-content-md-center y-5">
+              <Row className="justify-content-md-center my-5">
                 <section id="Card">
                   <Cards recipes={this.state.recipes} />
                 </section>
-              </Row>
+              </Row><hr/>
 
-              <Row className="justify-content-md-center y-5">
+              <Row className="justify-content-md-center my-5">
                 <section id="List">
                   <List recipes={this.state.recipes} />
                 </section>

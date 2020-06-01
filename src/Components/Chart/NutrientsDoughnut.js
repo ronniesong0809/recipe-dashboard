@@ -29,7 +29,7 @@ class DoughnutChart extends Component {
     }
     return (
       <div>
-        <h5>Carb, Protein and Fat Breakdown</h5>
+        <h5>Carbs, Protein and Fat Breakdown</h5>
         <Doughnut 
             data={data}
             options={{

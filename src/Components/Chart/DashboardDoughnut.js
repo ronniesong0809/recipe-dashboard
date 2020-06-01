@@ -24,7 +24,6 @@ class DashboardDoughnut extends Component {
     };
     return (
       <div>
-		    <h5>Carbs, Protein and Fat Breakdown</h5>
         <Doughnut data={data} />
       </div>
     );

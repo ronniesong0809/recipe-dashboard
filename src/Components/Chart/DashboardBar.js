@@ -20,26 +20,26 @@ class DashboardBar extends Component {
       datasets: [
         {
           label: 'Carbohydrates',
-          backgroundColor: 'rgba(255,206,86,0.2)',
+          backgroundColor: 'rgba(255,206,86,0.5)',
           borderColor: 'rgba(255,206,86,1)',
           borderWidth: 1,
-          hoverBackgroundColor: 'rgba(255,206,86,0.4)',
+          hoverBackgroundColor: 'rgba(255,206,86,0.8)',
           hoverBorderColor: 'rgba(255,206,86,1)',
           data: tempCarbs
         },{
           label: 'Protein',
-          backgroundColor: 'rgba(178,255,158,0.2)',
+          backgroundColor: 'rgba(178,255,158,0.5)',
           borderColor: 'rgba(178,255,158,1)',
           borderWidth: 1,
-          hoverBackgroundColor: 'rgba(178,255,158,0.4)',
+          hoverBackgroundColor: 'rgba(178,255,158,0.8)',
           hoverBorderColor: 'rgba(178,255,158,1)',
           data: tempProtein
         },{
           label: 'Fat',
-          backgroundColor: 'rgba(255,99,132,0.2)',
+          backgroundColor: 'rgba(255,99,132,0.5)',
           borderColor: 'rgba(255,99,132,1)',
           borderWidth: 1,
-          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+          hoverBackgroundColor: 'rgba(255,99,132,0.8)',
           hoverBorderColor: 'rgba(255,99,132,1)',
           data: tempFat
         }
@@ -47,7 +47,6 @@ class DashboardBar extends Component {
     };
     return (
       <div>
-        <h5>Carb, Protein and Fat comparison</h5>
         <Bar data={data} />
       </div>
     )
