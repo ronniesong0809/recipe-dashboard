@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import Chart from './Chart'
+import BarChart from './Chart/DashboardBar'
+import DoughnutChart from './Chart/DashboardDoughnut'
 import Cards from './Cards'
 import Map from './Map'
 import List from './List'
 import HomeLayout from './HomeLayout'
 import Axios from 'axios'
-import {InputGroup, FormControl, Button, Jumbotron, Container, Row, Col} from 'react-bootstrap'
+import {InputGroup, FormControl, Button, Jumbotron, Container, Row, Col, Card} from 'react-bootstrap'
 
 class Body extends Component {
   constructor() {
@@ -20,7 +21,6 @@ class Body extends Component {
         "Shish kebab", 
         "Buffalo Chicken Dip", 
         "Mini Caramel Rolls", 
-        "Three-Bean Baked Beans", 
         "Pepper Poppers", 
         "Sour Cream Chip Muffins", 
         "Onion Beef au Jus"],
@@ -121,39 +121,41 @@ class Body extends Component {
 
           {this.state.isLoaded && 
             <Container>
-              <Row>
-                <Col>
-                  <section id="Chart">
-                    <Chart recipes={this.state.recipes} />
-                  </section>
+              <Row className="justify-content-md-center mb-5">
+                <Col md className="m-1">
+                  <Card id="Chart">
+                    <BarChart recipes={this.state.recipes} />
+                  </Card>
                 </Col>
                 
-                <Col>
-                  <section id="Chart">
-                    <Chart recipes={this.state.recipes} />
-                  </section>
+                <Col md className="m-1">
+                  <Card id="Chart">
+                    <DoughnutChart recipes={this.state.recipes} />
+                  </Card>
                 </Col>
 
-                <Col>
-                  <section id="Chart">
-                    <Chart recipes={this.state.recipes} />
-                  </section>
+                <Col md className="m-1">
+                  <Card id="Chart">
+                    <DoughnutChart recipes={this.state.recipes} />
+                  </Card>
                 </Col>
               </Row>
 
-              <Row>
+              <Row className="justify-content-md-center y-5">
                 <Col>
                   <section id="Map">
-                    <Map searchText={this.state.searchText} />
+                    <Map searchText={this.state.searchText}/>
                   </section>
                 </Col>
               </Row>
               
-              <Row>
+              <Row className="justify-content-md-center y-5">
                 <section id="Card">
                   <Cards recipes={this.state.recipes} />
                 </section>
-              
+              </Row>
+
+              <Row className="justify-content-md-center y-5">
                 <section id="List">
                   <List recipes={this.state.recipes} />
                 </section>
