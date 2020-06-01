@@ -7,7 +7,7 @@ class HomeLayout extends Component {
     return (
       <div className="Site">
         <div className="Header">
-          <Header isLoaded={this.props.isLoaded}/>
+          <Header isLoaded={this.props.isLoaded} recipes={this.props.recipes}/>
         </div>
         
         <div className="Site-content">

@@ -130,7 +130,7 @@ class Body extends Component {
 
   render() {
     return (
-      <HomeLayout isLoaded={this.state.isLoaded}>
+      <HomeLayout isLoaded={this.state.isLoaded} recipes={this.state.recipes}>
         <Container className="my-5">
           <InputGroup size="lg">
             <InputGroup.Prepend>
