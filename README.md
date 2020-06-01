@@ -6,13 +6,13 @@
 
 Copyright (c) 2020 Ronnie Song
 
-This is a simple web dashboard that allows the user to search an recipe.
+This is a simple dashboard that allows its users to search an recipe.
 
 Live demo: [here](https://recipesdashboard.herokuapp.com/)
 
 ## Tech Stack and Tools
 
-yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, google-map-react, eslint, Heroku
+yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, google-map-react, fontawesome eslint, Heroku
 
 ## Setup
 

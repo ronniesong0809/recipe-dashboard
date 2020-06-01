@@ -27,7 +27,7 @@ class Chart extends Component {
     }
 
     return (
-      <Card className="text-left mb-5">
+      <Card className="text-left my-3">
         <Card.Img variant="top" src={this.props.item.recipe.image} />
         <Card.Header className="card-header-labels">
           {this.props.item.recipe.healthLabels.map((healthLabels, healthLabels_key) => 
