@@ -42,3 +42,9 @@ body {
 .align-middle {
   vertical-align: middle;
 }
+
+.toast-message {
+  position: absolute;
+  top: 100;
+  /* left: 0; */
+}

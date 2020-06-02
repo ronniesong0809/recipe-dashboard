@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {InputGroup, FormControl, Button, Jumbotron, Container, Card, Nav} from 'react-bootstrap'
+import {InputGroup, FormControl, Button, Jumbotron, Container, Card, Nav, Alert, OverlayTrigger, Tooltip} from 'react-bootstrap'
 import Axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBug, faSearch} from '@fortawesome/free-solid-svg-icons'
@@ -34,6 +34,8 @@ class Body extends Component {
       businesses: [],
       displayCard: 1,
       nutrition: [],
+      isError: false,
+      errorMessage: "",
     };
   }
 
@@ -58,6 +60,12 @@ class Body extends Component {
   handleCardChange2 = () => {this.setState({displayCard: 2})};
   handleCardChange3 = () => {this.setState({displayCard: 3})};
   handleCardChange4 = () => {this.setState({displayCard: 4})};
+  handleKeyDown = (e) => {
+    if (e.key === "Enter"){
+      this.handleSearchSubmit()
+    }
+  }
+  setShow = () =>{this.setState({isError: false})};
   
   searchRecipe(){
     const base = "https://api.edamam.com/search?q="
@@ -68,22 +76,31 @@ class Body extends Component {
     let finalUrl = base + this.state.searchText + key + "&from=" + from + "&to=" + to;
     Axios.get(finalUrl)
     .then(async(res) => {
-      if(res.data) {
+      if(res.data && res.data.count!==0) {
         // console.log(res.data.hits)
         // console.log(res.data.hits[0].recipe.ingredients)
         this.setState({
           // recipes: res.data.hits[0].recipe.ingredients
           recipes: res.data.hits,
-          isLoaded: true
+          isLoaded: true,
+          isError: false,
+        })
+        this.searchNutrition()
+      }else{
+        this.setState({
+          isLoaded: false,
+          isError: true,
+          errorMessage: "0 found!"
         })
       }
-      this.searchNutrition()
     })
     .catch(err => {
-      console.log(err, "failed to search for recipes.");
+      console.log(err, ", failed to search for recipes.");
       this.setState({
         // recipes: res.data.hits[0].recipe.ingredients
-        isLoaded: false
+        isLoaded: false,
+        isError: true,
+        errorMessage: err
       })
       // alert(err + "!\nFailed to search for recipes.");
     })
@@ -111,11 +128,23 @@ class Body extends Component {
         this.setState({
           nutrition: res.data.foods
         })
+        // console.log("nutrition: ", this.state)
+      }else{
+        this.setState({
+          isLoaded: false,
+          isError: true,
+          errorMessage: "0 found!"
+        })
       }
-      // console.log("nutrition: ", this.state.nutrition)
     })
     .catch(err => {
-      console.log(err, "failed to search for recipes.");
+      console.log(err, ", failed to search for nutrition.");
+      this.setState({
+        isLoaded: false,
+        isError: true,
+        errorMessage: err
+      })
+      // alert(err + "!\nFailed to search for nutrition.");
     })
   }
 
@@ -149,10 +178,22 @@ class Body extends Component {
         this.setState({
           businesses: res.data.businesses
         })
+      }else{
+        this.setState({
+          isLoaded: false,
+          isError: true,
+          errorMessage: "0 found!"
+        })
       }
     })
     .catch(err => {
-      console.log(err, "failed to search.");
+      console.log(err, ", failed to search for restaurants.");
+      this.setState({
+        isLoaded: false,
+        isError: true,
+        errorMessage: err
+      })
+      // alert(err + "!\nFailed to search for restaurants.");
     })
   }
 
@@ -171,23 +212,38 @@ class Body extends Component {
         <Container className="my-5">
           <InputGroup size="lg">
             <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-lg">
-                <FontAwesomeIcon icon={faSearch}/>
-              </InputGroup.Text>
+              <OverlayTrigger placement="left" 
+                overlay={<Tooltip>Please enter a recipe!</Tooltip>}
+              >
+                <InputGroup.Text id="inputGroup-sizing-lg">
+                  <FontAwesomeIcon icon={faSearch}/>
+                </InputGroup.Text>
+              </OverlayTrigger>
             </InputGroup.Prepend>
             <FormControl 
               onChange={this.handleSearchInput}
               type="text"
               placeholder={this.state.searchText}
               aria-label="Large" 
-              aria-describedby="inputGroup-sizing-lg" 
+              aria-describedby="inputGroup-sizing-lg"
+              onKeyDown={this.handleKeyDown}
             />
             <InputGroup.Append>
-              <Button onClick={this.handleSearchSubmit} variant="outline-secondary">Search</Button>
+              <OverlayTrigger 
+                placement="right" 
+                overlay={<Tooltip>Click ME!</Tooltip>}
+              >
+                <Button onClick={this.handleSearchSubmit} variant="outline-secondary">Search</Button>
+              </OverlayTrigger>
             </InputGroup.Append>
           </InputGroup>
+          {this.state.isError && 
+          <Alert className="justify-content-md-center mt-1" variant="danger">
+            <Alert.Heading>Oops! Something went wrong.</Alert.Heading>
+            {this.state.errorMessage.toString()}
+          </Alert>}
         </Container>
-
+        
         {!this.state.isLoaded &&
           <Container><Jumbotron fluid>
             <h1>Welcome!</h1>
