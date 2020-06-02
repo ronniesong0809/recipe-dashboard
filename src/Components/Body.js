@@ -264,7 +264,12 @@ class Body extends Component {
             </section>
 
             <section id="List" className="justify-content-md-center"><hr/>
-              <List recipes={this.state.recipes} />
+              <Card>
+                <List businesses={this.state.businesses} />
+                <Card.Footer>
+                  <small className="text-muted">List</small>
+                </Card.Footer>
+              </Card>
             </section>
           </Container>
         }

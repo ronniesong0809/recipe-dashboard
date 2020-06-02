@@ -37,3 +37,7 @@ body {
   height: 600px;
   width: 100%;
 }
+
+.align-middle {
+  vertical-align: middle;
+}
