@@ -36,7 +36,7 @@ class Chart extends Component {
         </Card.Header>
         <Card.Body>
           <Card.Title>
-            <a href={this.props.item.recipe.url} className="card-title-source">{this.props.item.recipe.source}</a><br/>
+            <a href={this.props.item.recipe.url} rel="noopener noreferrer" target="_blank" className="card-title-source">{this.props.item.recipe.source}</a><br/>
             {this.props.item.recipe.label}
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
@@ -45,12 +45,12 @@ class Chart extends Component {
           <Card.Text className="mt-2 card-text">
             <b>Ingredients:</b>{this.props.item.recipe.ingredientLines.map((ingredientLine, ingredientLines_key) => 
               <span key={ingredientLines_key}> {(ingredientLines_key ? ', ': '')} {ingredientLine}</span>
-            )}<span>, and <a href={this.props.item.recipe.url}>more</a>.</span>
+            )}<span>, and <a href={this.props.item.recipe.url} rel="noopener noreferrer" target="_blank">more</a>.</span>
           </Card.Text>
         </Card.Body>
         <Card.Footer>
           <Button variant="primary" onClick={handleShow}>See Chart</Button>{' '}
-          <Button variant="primary" href={this.props.item.recipe.shareAs}>More Details</Button>
+          <Button variant="primary" href={this.props.item.recipe.shareAs} rel="noopener noreferrer" target="_blank">More Details</Button>
         </Card.Footer>
         <Modal 
           show={this.state.show} 

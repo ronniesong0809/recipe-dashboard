@@ -194,6 +194,8 @@ class Body extends Component {
               variant="btn btn-lg btn-outline-dark" 
               className="m-1" 
               href="https://github.com/ronniesong0809/dashboard"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <FontAwesomeIcon icon={faGithub}/> Learn More
             </Button>
@@ -201,6 +203,8 @@ class Body extends Component {
               variant="btn btn-lg btn-outline-warning" 
               className="m-1" 
               href="https://github.com/ronniesong0809/dashboard/issues/new"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <FontAwesomeIcon icon={faBug}/> Submit a Bug
             </Button>
@@ -244,6 +248,10 @@ class Body extends Component {
                 </Card.Footer>
               </Card>
             
+            <section id="Cards" className="justify-content-md-center mx-0"><hr/>
+              <Cards recipes={this.state.recipes} />
+            </section>
+            
             <section id="Map" className="justify-content-md-center"><hr/>
               <Card>
                 <Map businesses={this.state.businesses}/>
@@ -252,11 +260,7 @@ class Body extends Component {
                 </Card.Footer>
               </Card>
             </section>
-          
-            <section id="Cards" className="justify-content-md-center mx-0"><hr/>
-              <Cards recipes={this.state.recipes} />
-            </section>
-            
+
             <section id="List" className="justify-content-md-center"><hr/>
               <List recipes={this.state.recipes} />
             </section>
