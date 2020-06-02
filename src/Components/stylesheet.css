@@ -32,3 +32,8 @@ body {
 .card-text:hover {
   overflow: visible;
 }
+
+.leaflet-container {
+  height: 600px;
+  width: 100%;
+}

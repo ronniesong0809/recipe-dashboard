@@ -44,7 +44,7 @@ class Chart extends Component {
           </Card.Subtitle>
           <Card.Text className="mt-2 card-text">
             <b>Ingredients:</b>{this.props.item.recipe.ingredientLines.map((ingredientLine, ingredientLines_key) => 
-              <span key={ingredientLines_key}> {(ingredientLines_key ? ', ': '')} {ingredientLine}</span>
+              <span key={ingredientLines_key}>{(ingredientLines_key ? ', ': '')} {ingredientLine}</span>
             )}<span>, and <a href={this.props.item.recipe.url} rel="noopener noreferrer" target="_blank">more</a>.</span>
           </Card.Text>
         </Card.Body>

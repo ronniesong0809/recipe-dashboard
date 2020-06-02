@@ -60,15 +60,16 @@ class Body extends Component {
   handleCardChange4 = () => {this.setState({displayCard: 4})};
   
   searchRecipe(){
-    const BASE_URL = 'https://api.edamam.com/search'
+    const BASE_URL = 'https://api.edamam.com/search?q='
     const key = '&app_id=9d0b7970&app_key=d9473a311a7f52d37a0450db0d0cc581'
-    let finalUrl = BASE_URL + '?q=' + this.state.searchText + key + '&from=0&to=20';
+    const params = '&from=0&to=9'
+    let finalUrl = BASE_URL + this.state.searchText + key + params;
     // console.log(finalUrl)
     Axios.get(finalUrl)
     .then(async(res) => {
       if(res.data) {
-        console.log(res.data.hits)
-        console.log(res.data.hits[0].recipe.ingredients)
+        // console.log(res.data.hits)
+        // console.log(res.data.hits[0].recipe.ingredients)
         this.setState({
           // recipes: res.data.hits[0].recipe.ingredients
           recipes: res.data.hits,
@@ -83,7 +84,7 @@ class Body extends Component {
         // recipes: res.data.hits[0].recipe.ingredients
         isLoaded: false
       })
-      alert(err + "!\nFailed to search for recipes.");
+      // alert(err + "!\nFailed to search for recipes.");
     })
   }
 
@@ -112,7 +113,7 @@ class Body extends Component {
           nutrition: res.data.foods
         })
       }
-      console.log("nutrition: ", this.state.nutrition)
+      // console.log("nutrition: ", this.state.nutrition)
     })
     .catch(err => {
       console.log(err, 'failed to search for recipes.');
@@ -129,7 +130,7 @@ class Body extends Component {
   searchLocation(){
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const base = "https://api.yelp.com/v3/businesses/search?term="
-    const params = "&location=portland&limit=3"
+    const params = "&location=portland&limit=10"
     const key = "Bearer 4mP1pGrwFpbuMXBoiIMkrGRA6WmtaU9boasPYOT-bvEZ0bi7xTl7lr6uXHORbbvWG4CsJwUY-bRLCvTRqyCYmKLKhWZ3Hsg7fWiKIAXM3BkETbtGtD7_8U-afM3uXXYx"
     const url = proxy + base + this.state.searchText + params
     const config = { 
@@ -144,6 +145,7 @@ class Body extends Component {
     Axios.get(url, config)
     .then((res) => {
       if(res.data) {
+        // console.log(res.data)
         this.setState({
           businesses: res.data.businesses
         })

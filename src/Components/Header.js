@@ -15,8 +15,8 @@ class Headers extends Component {
           {this.props.isLoaded &&
           <Nav className="mr-auto">
             <Nav.Link href="#Charts">Charts</Nav.Link>
-            <Nav.Link href="#Map">Map</Nav.Link>
             <Nav.Link href="#Cards">Cards</Nav.Link>
+            <Nav.Link href="#Map">Map</Nav.Link>
             <Nav.Link href="#List">List</Nav.Link>
           </Nav>}
           {this.props.isLoaded &&
