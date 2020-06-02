@@ -38,7 +38,7 @@ class Body extends Component {
   }
 
   handleSearchInput = event => {
-    console.log(this.state.interval)
+    // console.log(this.state.interval)
     clearInterval(this.state.interval)
     this.setState({
       searchText: event.target.value
@@ -60,11 +60,12 @@ class Body extends Component {
   handleCardChange4 = () => {this.setState({displayCard: 4})};
   
   searchRecipe(){
-    const BASE_URL = 'https://api.edamam.com/search?q='
-    const key = '&app_id=9d0b7970&app_key=d9473a311a7f52d37a0450db0d0cc581'
-    const params = '&from=0&to=9'
-    let finalUrl = BASE_URL + this.state.searchText + key + params;
-    // console.log(finalUrl)
+    const base = "https://api.edamam.com/search?q="
+    const key = "&app_id=" + process.env.REACT_APP_EDAMAM_ID + "&app_key=" + process.env.REACT_APP_EDAMAM_KEY
+    const from = "0"
+    const to = "9"
+    // console.log(key)
+    let finalUrl = base + this.state.searchText + key + "&from=" + from + "&to=" + to;
     Axios.get(finalUrl)
     .then(async(res) => {
       if(res.data) {
@@ -79,7 +80,7 @@ class Body extends Component {
       this.searchNutrition()
     })
     .catch(err => {
-      console.log(err, 'failed to search for recipes.');
+      console.log(err, "failed to search for recipes.");
       this.setState({
         // recipes: res.data.hits[0].recipe.ingredients
         isLoaded: false
@@ -93,20 +94,18 @@ class Body extends Component {
     let searchText = ""
     this.state.recipes[0].recipe.ingredientLines.forEach(element => {
       // console.log(element)
-      searchText += element + ', '
+      searchText += element + ", "
     });
-    const BASE_URL = 'https://trackapi.nutritionix.com/v2/natural/nutrients/'
-    const id = "ec32a59d"
-    const key = "d13ec612386c8937ed513fc295ad10e3"
+    const base = "https://trackapi.nutritionix.com/v2/natural/nutrients/"
     const config = {
       headers:{
         "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
-        "x-app-id": id,
-        "x-app-key": key
+        "x-app-id": process.env.REACT_APP_NUTRITIONIX_ID,
+        "x-app-key": process.env.REACT_APP_NUTRITIONIX_KEY
       }
     }
-    Axios.post(BASE_URL, {'query': searchText}, config )
+    Axios.post(base, {"query": searchText}, config )
     .then((res) => {
       if(res.data) {
         this.setState({
@@ -116,7 +115,7 @@ class Body extends Component {
       // console.log("nutrition: ", this.state.nutrition)
     })
     .catch(err => {
-      console.log(err, 'failed to search for recipes.');
+      console.log(err, "failed to search for recipes.");
     })
   }
 
@@ -128,11 +127,12 @@ class Body extends Component {
   }
 
   searchLocation(){
-    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const proxy = "https://cors-anywhere.herokuapp.com/"
     const base = "https://api.yelp.com/v3/businesses/search?term="
-    const params = "&location=portland&limit=10"
-    const key = "Bearer 4mP1pGrwFpbuMXBoiIMkrGRA6WmtaU9boasPYOT-bvEZ0bi7xTl7lr6uXHORbbvWG4CsJwUY-bRLCvTRqyCYmKLKhWZ3Hsg7fWiKIAXM3BkETbtGtD7_8U-afM3uXXYx"
-    const url = proxy + base + this.state.searchText + params
+    const location = "portland"
+    const limit = "10"
+    const key = "Bearer " + process.env.REACT_APP_YELP_KEY
+    const url = proxy + base + this.state.searchText + "&location=" + location + "&limit=" + limit
     const config = { 
       headers: {
         "accept": "application/json",
@@ -145,7 +145,7 @@ class Body extends Component {
     Axios.get(url, config)
     .then((res) => {
       if(res.data) {
-        console.log(res.data)
+        // console.log(res.data)
         this.setState({
           businesses: res.data.businesses
         })

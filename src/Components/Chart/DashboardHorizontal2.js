@@ -12,7 +12,7 @@ class DashboardHorizontal1 extends Component {
     let carbohydrate = []
     let fat = []
     let sodium = []
-    console.log(this.props.nutrition)
+    // console.log(this.props.nutrition)
     this.props.nutrition.forEach((item) =>{ 
       // console.log(item)
       name.push(item.food_name)
