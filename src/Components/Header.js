@@ -21,12 +21,12 @@ class Headers extends Component {
           </Nav>}
           {this.props.isLoaded &&
           <Nav className="ml-auto">
-            <Nav.Link>{this.props.recipes[0].recipe.label}</Nav.Link>{' '}
+            <Nav.Link href={this.props.recipes[0].recipe.url} rel="noopener noreferrer" target="_blank">{this.props.recipes[0].recipe.label}</Nav.Link>{' '}
             <Nav.Item>
               <Image
                 src={this.props.recipes[0].recipe.image} 
-                width="30" 
-                height="30" 
+                width="40" 
+                height="40" 
                 roundedCircle
               />
             </Nav.Item>

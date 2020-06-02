@@ -145,7 +145,7 @@ class Body extends Component {
     Axios.get(url, config)
     .then((res) => {
       if(res.data) {
-        // console.log(res.data)
+        console.log(res.data)
         this.setState({
           businesses: res.data.businesses
         })

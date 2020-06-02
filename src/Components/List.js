@@ -25,10 +25,11 @@ class List extends Component {
                 roundedCircle 
               /></td>
               <td className="align-middle">{item.name}</td>
-              <td className="align-middle">{item.categories.map((category, c_key) =>
-                <span className="card-title-source" key={c_key}>{(c_key ? ' | ': '')}{category.title}</span>
-              )}</td>
-                
+              <td className="align-middle">
+                {item.categories.map((category, c_key) =>
+                  <span className="card-title-source" key={c_key}>{(c_key ? ' | ': '')}{category.title}</span>
+                )}
+              </td>
               <td className="align-middle">{item.rating} Stars<br/>{item.review_count} <a href={item.url} rel="noopener noreferrer" target="_blank">reviews</a></td>
               <td className="align-middle">{item.location.display_address[0]} {item.location.display_address[1]}<br/></td>
             </tr>
