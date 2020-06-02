@@ -11,8 +11,9 @@ This is a simple dashboard that allows its users to search an recipe.
 Live demo: [here](https://recipesdashboard.herokuapp.com/)
 
 ## Tech Stack and Tools
+[Edamam API](https://www.edamam.com/), [Nutritionix API](https://www.nutritionix.com/business/api), [Yelp API](https://www.yelp.com/fusion), [Google Map API](https://cloud.google.com/maps-platform/), 
 
-yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, google-map-react, fontawesome eslint, Heroku
+yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, google-map-react, fontawesome, eslint, Heroku
 
 ## Setup
 

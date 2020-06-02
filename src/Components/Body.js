@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {InputGroup, FormControl, Button, Jumbotron, Container, Card, Nav} from 'react-bootstrap'
 import Axios from 'axios'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBug} from '@fortawesome/free-solid-svg-icons'
+import {faBug, faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faGithub} from '@fortawesome/free-brands-svg-icons'
 import HomeLayout from './HomeLayout'
 import DashboardBar from './Chart/DashboardBar'
@@ -170,7 +170,7 @@ class Body extends Component {
           <InputGroup size="lg">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-lg">
-                Enter a Recipe
+                <FontAwesomeIcon icon={faSearch}/>
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl 
@@ -212,18 +212,18 @@ class Body extends Component {
             <section id="Charts" className="justify-content-md-center"><hr/></section>
               <Card>
                 <Card.Header>
-                <Nav variant="tabs" defaultActiveKey="#Ingredients1">
+                <Nav variant="tabs" defaultActiveKey="#Ingredients">
                   <Nav.Item>
-                    <Nav.Link eventKey="#Ingredients1" onClick={this.handleCardChange1}>Ingredients 1</Nav.Link>
+                    <Nav.Link eventKey="#Ingredients" onClick={this.handleCardChange1}>Ingredients</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="#Ingredients2" onClick={this.handleCardChange2}>Ingredients 2</Nav.Link>
+                    <Nav.Link eventKey="#Nutrition" onClick={this.handleCardChange2}>Nutrition</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="#Comparison" onClick={this.handleCardChange3}>Comparison</Nav.Link>
+                    <Nav.Link eventKey="#Breakdown" onClick={this.handleCardChange3}>Breakdown</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="#Breakdown" onClick={this.handleCardChange4}>Breakdown</Nav.Link>
+                    <Nav.Link eventKey="#Comparison" onClick={this.handleCardChange4}>Comparison</Nav.Link>
                   </Nav.Item>
                 </Nav>
                 </Card.Header>
@@ -234,16 +234,15 @@ class Body extends Component {
                     <DashboardHorizontal2 nutrition={this.state.nutrition} />
                   }
                   {this.state.displayCard===3 &&
-                    <DashboardBar recipes={this.state.recipes}/>
-                  }
-                  {this.state.displayCard===4 &&
                     <DashboardDoughnut recipes={this.state.recipes} />
                   }
+                  {this.state.displayCard===4 &&
+                    <DashboardBar recipes={this.state.recipes}/>
+                  }
                 <Card.Footer>
-                  <small className="text-muted">Carbs, Protein, Fat</small>
+                  <small className="text-muted">Charts</small>
                 </Card.Footer>
               </Card>
-            
             
             <section id="Map" className="justify-content-md-center"><hr/>
               <Card>
