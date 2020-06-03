@@ -10,9 +10,9 @@ class DashboardBar extends Component {
     let tempFat = []
     this.props.recipes.slice(0,3).forEach((item) =>{
       tempName.push(item.recipe.label)
-      tempCarbs.push(item.recipe.totalNutrients.CHOCDF.quantity)
-      tempProtein.push(item.recipe.totalNutrients.PROCNT.quantity)
-      tempFat.push(item.recipe.totalNutrients.FAT.quantity)
+      tempCarbs.push(item.recipe.totalNutrients.CHOCDF.quantity/item.recipe.yield)
+      tempProtein.push(item.recipe.totalNutrients.PROCNT.quantity/item.recipe.yield)
+      tempFat.push(item.recipe.totalNutrients.FAT.quantity/item.recipe.yield)
     })
 
     data = {

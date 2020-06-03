@@ -25,7 +25,7 @@ class MyMap extends Component {
                 <Media.Body>
                   <h5>{item.name}</h5>
                   <span className="card-title-source">
-                    <b>{item.price}</b> - 
+                    <b>{item.price} - </b>
                     {item.categories.map((category, c_key) =>
                       <span key={c_key}>{(c_key ? ' | ': '')}{category.title}</span>
                     )}

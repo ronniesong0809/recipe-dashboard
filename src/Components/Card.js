@@ -43,7 +43,8 @@ class Chart extends Component {
             <b>{(this.props.item.recipe.calories/this.props.item.recipe.yield).toFixed(0)}</b> Calories | <b>{this.props.item.recipe.ingredientLines.length}</b> Ingredients
           </Card.Subtitle>
           <Card.Text className="mt-2 card-text">
-            <b>Ingredients:</b>{this.props.item.recipe.ingredientLines}, and <a href={this.props.item.recipe.shareAs} rel="noopener noreferrer" target="_blank">more details</a>.
+            <b>Ingredients:</b> {this.props.item.recipe.ingredientLines}.<br/>
+            <a href={this.props.item.recipe.shareAs} rel="noopener noreferrer" target="_blank">Read More</a>
           </Card.Text>
         </Card.Body>
         <Card.Footer>
