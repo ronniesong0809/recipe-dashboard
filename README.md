@@ -11,9 +11,9 @@ This is a simple dashboard that allows its users to search an recipe.
 Live demo: [here](https://recipesdashboard.herokuapp.com/)
 
 ## Tech Stack and Tools
-[Edamam API](https://www.edamam.com/), [Nutritionix API](https://www.nutritionix.com/business/api), [Yelp API](https://www.yelp.com/fusion), [Google Map API](https://cloud.google.com/maps-platform/), 
+[Edamam API](https://www.edamam.com/), [Nutritionix API](https://www.nutritionix.com/business/api), [Yelp API](https://www.yelp.com/fusion)
 
-yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, google-map-react, fontawesome, eslint, Heroku
+yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, react-leaflet, fontawesome, eslint, Heroku
 
 ## Setup
 
@@ -31,8 +31,20 @@ $ yarn start
 ```
 Go to: [localhost:3000/](http://localhost:3000/)
 
+## Reference
+
+ - Edamam API [Documentation](https://developer.edamam.com/edamam-docs-recipe-api)
+ - Nutritionix API v2 [Documentation](https://docs.google.com/document/d/1_q-K-ObMTZvO0qUEAxROrN3bwMujwAN25sLHwJzliK0/edit)
+ - Yelp API v3 [Documentation](https://www.yelp.com/developers/documentation/v3)
+ - React Bootstrap [Documentation](https://react-bootstrap.github.io/components/alerts/)
+ - React Chartjs-2: [Examples](http://jerairrest.github.io/react-chartjs-2/), [codes](https://github.com/jerairrest/react-chartjs-2/tree/master/example/src/components)
+ - React-Leaflet: [Example](https://react-leaflet.js.org/docs/en/examples)
+ - [Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
+ - [Heroku Buildpack for create-react-app](https://elements.heroku.com/buildpacks/mars/create-react-app-buildpack)
+ - [Fixed Headers, On-Page Links, and Overlapping Content, Oh My!](https://css-tricks.com/fixed-headers-on-page-links-and-overlapping-content-oh-my/)
+
 ## License
 
 This program is licensed under the "MIT License". Please
-see the file [`LICENSE`](https://github.com/ronniesong0809/dashboard/blob/readme/LICENSE) in the source distribution of this
+see the file [`LICENSE`](https://github.com/ronniesong0809/dashboard/blob/master/LICENSE) in the source distribution of this
 software for license terms.
