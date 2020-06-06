@@ -52,11 +52,11 @@ class DashboardHorizontal1 extends Component {
       },{
         label: "calories",
         data: calories,
-        backgroundColor: 'rgba(214,159,18,0.5)',
-        borderColor: 'rgba(214,159,18,1)',
+        backgroundColor: 'rgba(130,121,255,0.5)',
+        borderColor: 'rgba(130,121,255,1)',
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(214,159,18,0.8)',
-        hoverBorderColor: 'rgba(214,159,18,1)',
+        hoverBackgroundColor: 'rgba(130,121,255,0.8)',
+        hoverBorderColor: 'rgba(130,121,255,1)',
       },{
         label: "sugars",
         data: sugars,
