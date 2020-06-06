@@ -11,9 +11,9 @@ This is a simple dashboard that allows its users to search an recipe.
 Live demo: [here](https://recipesdashboard.herokuapp.com/)
 
 ## Tech Stack and Tools
-[Edamam API](https://www.edamam.com/), [Nutritionix API](https://www.nutritionix.com/business/api), [Yelp API](https://www.yelp.com/fusion), [Google Map API](https://cloud.google.com/maps-platform/), 
+[Edamam API](https://www.edamam.com/), [Nutritionix API](https://www.nutritionix.com/business/api), [Yelp API](https://www.yelp.com/fusion)
 
-yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, google-map-react, fontawesome, eslint, Heroku
+yarn, create-react-app, react-bootstrap, react-chartjs-2, react-router-dom, Axios, react-leaflet, fontawesome, eslint, Heroku
 
 ## Setup
 
@@ -30,6 +30,18 @@ Run
 $ yarn start
 ```
 Go to: [localhost:3000/](http://localhost:3000/)
+
+## Reference
+
+ - [Working with JSON](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON)
+ - [Edamam API Documentation](https://developer.edamam.com/edamam-docs-recipe-api)
+ - [Nutritionix API v2 Documentation](https://docs.google.com/document/d/1_q-K-ObMTZvO0qUEAxROrN3bwMujwAN25sLHwJzliK0/edit)
+ - [Yelp API v3 Documentation](https://www.yelp.com/developers/documentation/v3)
+ - [React Bootstrap Documentation](https://react-bootstrap.github.io/components/alerts/)
+ - [React Chartjs-2 Examples](https://github.com/jerairrest/react-chartjs-2/tree/master/example/src/components)
+ - [React-Leaflet Example](https://github.com/jerairrest/react-chartjs-2/tree/master/example/src/components)
+ - [Heroku Buildpack for create-react-app](https://react-leaflet.js.org/)
+ - [Fixed Headers, On-Page Links, and Overlapping Content, Oh My!](https://css-tricks.com/fixed-headers-on-page-links-and-overlapping-content-oh-my/)
 
 ## License
 
