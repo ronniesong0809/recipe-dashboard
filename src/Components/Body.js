@@ -181,7 +181,7 @@ class Body extends Component {
       }else{
         this.setState({
           isLoaded: false,
-          isError: true,
+          // isError: true,
           errorMessage: "0 found!"
         })
       }

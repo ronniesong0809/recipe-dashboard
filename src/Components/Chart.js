@@ -3,7 +3,6 @@ import Axios from 'axios'
 import {Doughnut} from 'react-chartjs-2';
 
 class Chart extends Component {
-  displayName: 'DynamicDoughnutExample';
 
   constructor() {
     super();
