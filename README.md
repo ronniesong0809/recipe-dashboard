@@ -1,14 +1,15 @@
-# Dashboard
-[![Heroku](https://img.shields.io/badge/Heroku-deployed-blueviolet)](https://recipesdashboard.herokuapp.com)
-<img alt="Website" src="https://img.shields.io/website/http/recipesdashboard.herokuapp.com">
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ronniesong0809/dashboard/blob/master/LICENSE)
+# Recipe Dashboard
+[![Heroku](https://img.shields.io/badge/Heroku-deployed-blueviolet)](https://recipedashboard.herokuapp.com)
+<img alt="Website" src="https://img.shields.io/website/http/recipedashboard.herokuapp.com">
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ronniesong0809/recipe-dashboard/blob/master/LICENSE)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fronniesong0809%2Fdashboard.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fronniesong0809%2Fdashboard?ref=badge_shield)
 [![contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ronniesong0809/dashboard/issues/new)
 
 Copyright (c) 2020 Ronnie Song
 
 This is a simple dashboard that allows its users to search an recipe.
 
-Live demo: [here](https://recipesdashboard.herokuapp.com/)
+Live demo: [here](https://recipedashboard.herokuapp.com/)
 
 ## Tech Stack and Tools
 [Edamam API](https://www.edamam.com/), [Nutritionix API](https://www.nutritionix.com/business/api), [Yelp API](https://www.yelp.com/fusion)
@@ -48,3 +49,5 @@ Go to: [localhost:3000/](http://localhost:3000/)
 This program is licensed under the "MIT License". Please
 see the file [`LICENSE`](https://github.com/ronniesong0809/dashboard/blob/readme/LICENSE) in the source distribution of this
 software for license terms.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fronniesong0809%2Fdashboard.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fronniesong0809%2Fdashboard?ref=badge_large)

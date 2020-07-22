@@ -8,7 +8,7 @@ class Headers extends Component {
       <Navbar fixed="top" bg="dark" variant="dark" expand="lg">
         <Navbar.Brand href="/">
           <Logo fill="white" src="/Logo.svg" width="30" height="30" className="d-inline-block align-top" />{' '}
-          Recipes Dashboard
+          Recipe Dashboard
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
