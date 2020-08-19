@@ -1,6 +1,6 @@
 # Recipe Dashboard
 [![Heroku](https://img.shields.io/badge/Heroku-deployed-blueviolet)](https://recipedashboard.herokuapp.com)
-<img alt="Website" src="https://img.shields.io/website/http/recipedashboard.herokuapp.com">
+[![Website](https://img.shields.io/website?down_color=red&down_message=down&up_color=brightgreen&up_message=up&url=https%3A%2F%2Frecipedashboard.herokuapp.com%2F)](https://recipedashboard.herokuapp.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ronniesong0809/recipe-dashboard/blob/master/LICENSE)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fronniesong0809%2Fdashboard.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fronniesong0809%2Fdashboard?ref=badge_shield)
 [![contributions welcome](https://img.shields.io/badge/Contributions-welcome-brightgreen.svg?style=flat)](https://github.com/ronniesong0809/dashboard/issues/new)
