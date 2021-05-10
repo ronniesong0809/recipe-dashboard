@@ -156,7 +156,7 @@ class Body extends Component {
   }
 
   searchLocation(){
-    const proxy = "https://cors-anywhere.herokuapp.com/"
+    const proxy = "https://unblock-cors.herokuapp.com/"
     const base = "https://api.yelp.com/v3/businesses/search?term="
     const location = "portland"
     const limit = "10"
